@@ -97,7 +97,7 @@ button {
 
 <!-- MÜZİK -->
 <audio id="mySong" loop>
-    <source src="https://drive.google.com/uc?export=download&id=1SCJXpbDY_lhibmC3pjfXPNfeEZ3nOfrS" type="audio/mpeg">
+    <source src="https://voca.ro/18McUQcnrL2r.mp3" type="audio/mpeg">
 </audio>
 
 <button class="music-btn" onclick="startMusic()">🎵 Müziği Başlat</button>
@@ -136,7 +136,7 @@ button {
 // MÜZİK BUTONU
 function startMusic() {
     const song = document.getElementById("mySong");
-    song.play().catch(() => alert("Butona tıklayınca müzik çalacak 😎"));
+    song.play().catch(() => alert("Butona tıkladığında müzik çalacak 😎"));
 }
 
 // GÜN SAYACI
@@ -170,7 +170,7 @@ function moveButton() {
     btn.style.top = Math.random() * 400 + "px";
 }
 
-// KALP ANİMASYONU
+// Kalp animasyonu
 setInterval(() => {
     let heart = document.createElement("div");
     heart.className = "heart";
@@ -180,7 +180,7 @@ setInterval(() => {
     setTimeout(() => { heart.remove(); }, 5000);
 }, 500);
 
-// SLAYT
+// Slayt
 let slideIndex = 0;
 const slides = document.querySelectorAll(".slide");
 function showSlides() {
