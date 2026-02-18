@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naz ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(0,0,0,0.3);
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 380px;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.slideshow img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.music-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: white;
+    color: #ff4d6d;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 999;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 8px;
+}
+
+#yesBtn {
+    background: white;
+    color: #ff4d6d;
+}
+
+#noBtn {
+    background: #ff4d6d;
+    color: white;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+.heart {
+    position: absolute;
+    bottom: -10px;
+    color: white;
+    animation: floatUp 5s linear infinite;
+    font-size: 20px;
+}
+
+@keyframes floatUp {
+    from {transform: translateY(0);}
+    to {transform: translateY(-100vh);}
+}
+</style>
+</head>
+<body>
+
+<!-- MÜZİK -->
+<audio id="mySong" loop>
+    <source src="https://drive.google.com/uc?export=download&id=1SCJXpbDY_lhibmC3pjfXPNfeEZ3nOfrS" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="startMusic()">🎵 Müziği Başlat</button>
+
+<div class="container" id="step1">
+    <div class="slideshow">
+        <img class="slide" src="https://i.hizliresim.com/j8dsb60.jpeg">
+        <img class="slide" src="https://i.hizliresim.com/6lmqmf0.jpeg">
+        <img class="slide" src="https://i.hizliresim.com/t06ddpv.jpg">
+    </div>
+    <h1>Naz ❤️</h1>
+    <p id="days"></p>
+    <button onclick="nextStep()">Devam Et 💌</button>
+</div>
+
+<div class="container hidden" id="step2">
+    <h2>Küçük Bir Şey 🥹</h2>
+    <p>Bazen seni kırdıysam gerçekten özür dilerim.
+    Ama bil ki 9 Ağustos 2024'ten beri hayatımın en güzel parçasısın.</p>
+    <button onclick="nextStep2()">Devam Edelim mi? ❤️</button>
+</div>
+
+<div class="container hidden" id="step3">
+    <h2>Naz beni affetti mi? 😅</h2>
+    <button id="yesBtn" onclick="finalStep()">Evet 💖</button>
+    <button id="noBtn" onmouseover="moveButton()">Hayır 😜</button>
+</div>
+
+<div class="container hidden" id="final">
+    <h2>İyi ki Varsın ❤️</h2>
+    <p>Sen benim huzurum, mutluluğum ve en güzel alışkanlığımsın.</p>
+    <p>Seni çok seviyorum Naz 💕</p>
+</div>
+
+<script>
+// MÜZİK
+function startMusic() {
+    document.getElementById("mySong").play();
+}
+
+// GÜN SAYACI
+function calculateDays() {
+    const startDate = new Date("2024-08-09");
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("days").innerHTML =
+    "9 Ağustos 2024'ten beri tam " + diffDays + " gündür hayatımdasın 💖";
+}
+calculateDays();
+
+// Step geçiş
+function nextStep() {
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.remove("hidden");
+}
+function nextStep2() {
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("step3").classList.remove("hidden");
+}
+function finalStep() {
+    document.getElementById("step3").classList.add("hidden");
+    document.getElementById("final").classList.remove("hidden");
+}
+function moveButton() {
+    let btn = document.getElementById("noBtn");
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 250 + "px";
+    btn.style.top = Math.random() * 400 + "px";
+}
+
+// KALPLER
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 5000);
+}, 500);
+
+// SLAYT
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+function showSlides() {
+    slides.forEach((s) => s.style.display = "none");
+    slideIndex++;
+    if(slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 3000);
+}
+showSlides();
+</script>
+
+</body>
+</html>
