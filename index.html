@@ -104,9 +104,9 @@ button {
 
 <div class="container" id="step1">
     <div class="slideshow">
-        <img class="slide" src="https://i.hizliresim.com/j8dsb60.jpeg">
-        <img class="slide" src="https://i.hizliresim.com/6lmqmf0.jpeg">
-        <img class="slide" src="https://i.hizliresim.com/t06ddpv.jpg">
+        <img class="slide" src="https://i.hizliresim.com/j8dsb60.jpeg" alt="Naz 1">
+        <img class="slide" src="https://i.hizliresim.com/6lmqmf0.jpeg" alt="Naz 2">
+        <img class="slide" src="https://i.hizliresim.com/t06ddpv.jpg" alt="Naz 3">
     </div>
     <h1>Naz ❤️</h1>
     <p id="days"></p>
@@ -133,9 +133,10 @@ button {
 </div>
 
 <script>
-// MÜZİK
+// MÜZİK BUTONU
 function startMusic() {
-    document.getElementById("mySong").play();
+    const song = document.getElementById("mySong");
+    song.play().catch(() => alert("Butona tıklayınca müzik çalacak 😎"));
 }
 
 // GÜN SAYACI
@@ -149,7 +150,7 @@ function calculateDays() {
 }
 calculateDays();
 
-// Step geçiş
+// Step geçişleri
 function nextStep() {
     document.getElementById("step1").classList.add("hidden");
     document.getElementById("step2").classList.remove("hidden");
@@ -169,7 +170,7 @@ function moveButton() {
     btn.style.top = Math.random() * 400 + "px";
 }
 
-// KALPLER
+// KALP ANİMASYONU
 setInterval(() => {
     let heart = document.createElement("div");
     heart.className = "heart";
